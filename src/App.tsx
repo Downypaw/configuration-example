@@ -14,6 +14,7 @@ function App() {
 
   return (
     <>
+      <p>{import.meta.env.VITE_ROLE === 'risk-manager' ? 'Риск менеджер' : 'Не риск менеджер'}</p>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

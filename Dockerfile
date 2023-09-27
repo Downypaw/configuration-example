@@ -1,6 +1,8 @@
 # Stage 1
 FROM node:18.16.1 as build
 
+ARG VITE_ROLE
+
 WORKDIR /app/tmp
 
 COPY package*.json ./
@@ -16,7 +18,7 @@ RUN npm run build
 FROM nginx:latest as static
 
 COPY --from=build /app/tmp/dist /usr/share/nginx/html/static
-COPY --from=build /app/tmp/nginx.conf /etc/nginx
+COPY --from=build /app/tmp/nginx.conf /etc/nginx/conf.d
 
 EXPOSE 8080
 
